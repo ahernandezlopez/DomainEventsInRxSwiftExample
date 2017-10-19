@@ -24,7 +24,7 @@ public class LocalListingRepository: ListingRepository {
                 print("onCompleted")
             }, onDisposed: {
                 print("onDisposed")
-            }).addDisposableTo(disposeBag)
+            }).disposed(by: disposeBag)
     }
     
     public func filteredEvents(listing: Listing) -> Observable<ListingRepositoryEvent> {
@@ -99,7 +99,7 @@ public class LocalListingRepository: ListingRepository {
         }
     }
     
-    private func delay<T, E: Error>(result: Result<T, E>, completion: ((Result<T, E>) -> Void)?) {
+    private func delay<T, E>(result: Result<T, E>, completion: ((Result<T, E>) -> Void)?) {
         let deadline: DispatchTime = .now() + .milliseconds(50)
         DispatchQueue.main.asyncAfter(deadline: deadline) {
             completion?(result)

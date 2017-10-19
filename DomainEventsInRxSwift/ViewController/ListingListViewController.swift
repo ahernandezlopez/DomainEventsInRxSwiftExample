@@ -60,7 +60,7 @@ public class ListingListViewController: BaseViewController {
             print("onCompleted")
         }, onDisposed: {
             print("onDisposed")
-        }).addDisposableTo(disposeBag)
+        }).disposed(by: disposeBag)
         
         contentView.selectedListing.subscribe(onNext: { [weak self] listing in
             guard let `self` = self,
@@ -74,10 +74,10 @@ public class ListingListViewController: BaseViewController {
             print("onCompleted")
         }, onDisposed: {
             print("onDisposed")
-        }).addDisposableTo(disposeBag)
+        }).disposed(by: disposeBag)
     }
     
-    private dynamic func create() {
+    @objc private dynamic func create() {
         let params = ListingRepositoryCreateParams(title: String.makeRandom(length: 10),
                                                    price: Int.makeRandom())
         repository.create(params: params,
