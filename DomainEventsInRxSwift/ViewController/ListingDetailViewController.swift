@@ -46,7 +46,7 @@ public class ListingDetailViewController: BaseViewController {
             print("onCompleted")
         }, onDisposed: {
             print("onDisposed")
-        }).addDisposableTo(disposeBag)
+        }).disposed(by: disposeBag)
     }
     
     private func updateUI() {
@@ -55,7 +55,7 @@ public class ListingDetailViewController: BaseViewController {
                               price: String(listing.price))
     }
     
-    private dynamic func update() {
+    @objc private dynamic func update() {
         let params = ListingRepositoryUpdateParams(title: String.makeRandom(length: 10),
                                                    price: Int.makeRandom())
         repository.update(listing: listing,
