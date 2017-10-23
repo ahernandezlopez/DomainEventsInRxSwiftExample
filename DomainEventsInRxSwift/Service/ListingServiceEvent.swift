@@ -1,4 +1,4 @@
-public enum ListingRepositoryEvent {
+public enum ListingServiceEvent {
     case create(listing: Listing)
     case update(listing: Listing)
     case delete(listing: Listing)
