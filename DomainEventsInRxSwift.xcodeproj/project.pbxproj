@@ -10,7 +10,6 @@
 		503633FF1F988CE700AF8C18 /* Int+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503633EF1F988CE700AF8C18 /* Int+Random.swift */; };
 		503634001F988CE700AF8C18 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503633F01F988CE700AF8C18 /* Result.swift */; };
 		503634011F988CE700AF8C18 /* String+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503633F11F988CE700AF8C18 /* String+Random.swift */; };
-		503634021F988CE700AF8C18 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503633F31F988CE700AF8C18 /* BaseViewController.swift */; };
 		503634031F988CE700AF8C18 /* ListingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503633F41F988CE700AF8C18 /* ListingDetailViewController.swift */; };
 		503634041F988CE700AF8C18 /* ListingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503633F51F988CE700AF8C18 /* ListingListViewController.swift */; };
 		503634051F988CE700AF8C18 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503633F61F988CE700AF8C18 /* TabBarController.swift */; };
@@ -30,7 +29,6 @@
 		503633EF1F988CE700AF8C18 /* Int+Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Random.swift"; sourceTree = "<group>"; };
 		503633F01F988CE700AF8C18 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		503633F11F988CE700AF8C18 /* String+Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Random.swift"; sourceTree = "<group>"; };
-		503633F31F988CE700AF8C18 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		503633F41F988CE700AF8C18 /* ListingDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingDetailViewController.swift; sourceTree = "<group>"; };
 		503633F51F988CE700AF8C18 /* ListingListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListingListViewController.swift; sourceTree = "<group>"; };
 		503633F61F988CE700AF8C18 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -84,7 +82,6 @@
 		503633F21F988CE700AF8C18 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				503633F31F988CE700AF8C18 /* BaseViewController.swift */,
 				503633F41F988CE700AF8C18 /* ListingDetailViewController.swift */,
 				503633F51F988CE700AF8C18 /* ListingListViewController.swift */,
 				503633F61F988CE700AF8C18 /* TabBarController.swift */,
@@ -294,7 +291,6 @@
 				503634051F988CE700AF8C18 /* TabBarController.swift in Sources */,
 				503634011F988CE700AF8C18 /* String+Random.swift in Sources */,
 				503633FF1F988CE700AF8C18 /* Int+Random.swift in Sources */,
-				503634021F988CE700AF8C18 /* BaseViewController.swift in Sources */,
 				503634031F988CE700AF8C18 /* ListingDetailViewController.swift in Sources */,
 				503634081F988CE700AF8C18 /* Listing.swift in Sources */,
 				503634041F988CE700AF8C18 /* ListingListViewController.swift in Sources */,

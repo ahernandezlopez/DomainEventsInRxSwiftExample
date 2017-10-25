@@ -2,17 +2,19 @@ import Foundation
 import RxSwift
 import UIKit
 
-public class ListingDetailViewController: BaseViewController {
+public class ListingDetailViewController: UIViewController {
     private let contentView: ListingDetailView
     private let service: ListingService
     private var listing: Listing
+    private let disposeBag: DisposeBag
     
     public init(service: ListingService,
                 listing: Listing) {
         self.contentView = ListingDetailView()
         self.service = service
         self.listing = listing
-        super.init()
+        self.disposeBag = DisposeBag()
+        super.init(nibName: nil, bundle: nil)
         title = listing.id
     }
     
@@ -28,20 +30,12 @@ public class ListingDetailViewController: BaseViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit,
                                                             target: self,
                                                             action: #selector(update))
-    }
-    
-    public override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    override func viewWillFirstAppear() {
-        super.viewWillFirstAppear()
         
         service.events.subscribe(onNext: { [weak self] event in
             self?.listing = event.listing
             self?.updateUI()
-        }, onError: { error in
-            print("onError: \(error)")
+            }, onError: { error in
+                print("onError: \(error)")
         }, onCompleted: {
             print("onCompleted")
         }, onDisposed: {

@@ -2,15 +2,17 @@ import Foundation
 import RxSwift
 import UIKit
 
-public class ListingListViewController: BaseViewController {
+public class ListingListViewController: UIViewController {
     private let contentView: ListingListView
     private let service: ListingService
+    private let disposeBag: DisposeBag
     
     public init(service: ListingService,
                 title: String) {
         self.contentView = ListingListView()
         self.service = service
-        super.init()
+        self.disposeBag = DisposeBag()
+        super.init(nibName: nil, bundle: nil)
         self.title = title
     }
     
@@ -32,15 +34,6 @@ public class ListingListViewController: BaseViewController {
             guard let listings = result.data else { return }
             self?.contentView.listings = listings
         }
-    }
-    
-    public override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        contentView.deselectSelectedRow()
-    }
-    
-    override func viewWillFirstAppear() {
-        super.viewWillFirstAppear()
         
         service.events.subscribe(onNext: { [weak self] event in
             guard let `self` = self else { return }
@@ -52,8 +45,8 @@ public class ListingListViewController: BaseViewController {
             case let .delete(listing):
                 self.contentView.delete(listing: listing)
             }
-        }, onError: { error in
-            print("onError: \(error)")
+            }, onError: { error in
+                print("onError: \(error)")
         }, onCompleted: {
             print("onCompleted")
         }, onDisposed: {
@@ -62,17 +55,22 @@ public class ListingListViewController: BaseViewController {
         
         contentView.selectedListing.subscribe(onNext: { [weak self] listing in
             guard let `self` = self,
-                  let listing = listing else { return }
+                let listing = listing else { return }
             let viewController = ListingDetailViewController(service: self.service,
                                                              listing: listing)
             self.navigationController?.pushViewController(viewController, animated: true)
-        }, onError: { error in
-            print("onError: \(error)")
+            }, onError: { error in
+                print("onError: \(error)")
         }, onCompleted: {
             print("onCompleted")
         }, onDisposed: {
             print("onDisposed")
         }).disposed(by: disposeBag)
+    }
+    
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        contentView.deselectSelectedRow()
     }
     
     @objc private dynamic func create() {
