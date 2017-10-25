@@ -4,12 +4,12 @@ import UIKit
 
 public class ListingListViewController: BaseViewController {
     private let contentView: ListingListView
-    private let repository: ListingRepository
+    private let service: ListingService
     
-    public init(repository: ListingRepository,
+    public init(service: ListingService,
                 title: String) {
         self.contentView = ListingListView()
-        self.repository = repository
+        self.service = service
         super.init()
         self.title = title
     }
@@ -27,8 +27,8 @@ public class ListingListViewController: BaseViewController {
                                                             target: self,
                                                             action: #selector(create))
         
-        let params = ListingRepositorySearchParams()
-        repository.search(params: params) { [weak self] result in
+        let params = ListingServiceSearchParams()
+        service.search(params: params) { [weak self] result in
             guard let listings = result.data else { return }
             self?.contentView.listings = listings
         }
@@ -42,7 +42,7 @@ public class ListingListViewController: BaseViewController {
     override func viewWillFirstAppear() {
         super.viewWillFirstAppear()
         
-        repository.events.subscribe(onNext: { [weak self] event in
+        service.events.subscribe(onNext: { [weak self] event in
             guard let `self` = self else { return }
             switch event {
             case let .create(listing):
@@ -63,7 +63,7 @@ public class ListingListViewController: BaseViewController {
         contentView.selectedListing.subscribe(onNext: { [weak self] listing in
             guard let `self` = self,
                   let listing = listing else { return }
-            let viewController = ListingDetailViewController(repository: self.repository,
+            let viewController = ListingDetailViewController(service: self.service,
                                                              listing: listing)
             self.navigationController?.pushViewController(viewController, animated: true)
         }, onError: { error in
@@ -76,9 +76,9 @@ public class ListingListViewController: BaseViewController {
     }
     
     @objc private dynamic func create() {
-        let params = ListingRepositoryCreateParams(title: String.makeRandom(length: 10),
-                                                   price: Int.makeRandom())
-        repository.create(params: params,
-                          completion: nil)
+        let params = ListingServiceCreateParams(title: String.makeRandom(length: 10),
+                                                price: Int.makeRandom())
+        service.create(params: params,
+                       completion: nil)
     }
 }

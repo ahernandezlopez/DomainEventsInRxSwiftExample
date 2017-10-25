@@ -4,13 +4,13 @@ import UIKit
 
 public class ListingDetailViewController: BaseViewController {
     private let contentView: ListingDetailView
-    private let repository: ListingRepository
+    private let service: ListingService
     private var listing: Listing
     
-    public init(repository: ListingRepository,
+    public init(service: ListingService,
                 listing: Listing) {
         self.contentView = ListingDetailView()
-        self.repository = repository
+        self.service = service
         self.listing = listing
         super.init()
         title = listing.id
@@ -37,7 +37,7 @@ public class ListingDetailViewController: BaseViewController {
     override func viewWillFirstAppear() {
         super.viewWillFirstAppear()
         
-        repository.events.subscribe(onNext: { [weak self] event in
+        service.events.subscribe(onNext: { [weak self] event in
             self?.listing = event.listing
             self?.updateUI()
         }, onError: { error in
@@ -56,10 +56,10 @@ public class ListingDetailViewController: BaseViewController {
     }
     
     @objc private dynamic func update() {
-        let params = ListingRepositoryUpdateParams(title: String.makeRandom(length: 10),
-                                                   price: Int.makeRandom())
-        repository.update(listing: listing,
-                          params: params,
-                          completion: nil)
+        let params = ListingServiceUpdateParams(title: String.makeRandom(length: 10),
+                                                price: Int.makeRandom())
+        service.update(listing: listing,
+                       params: params,
+                       completion: nil)
     }
 }

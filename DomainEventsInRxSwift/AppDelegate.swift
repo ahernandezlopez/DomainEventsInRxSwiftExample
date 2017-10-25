@@ -14,9 +14,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        let repository: ListingRepository = LocalListingRepository()
+        let service: ListingService = LocalListingService()
         let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = TabBarController(repository: repository)
+        window.rootViewController = TabBarController(service: service)
         self.window = window
         window.makeKeyAndVisible()
         return true
