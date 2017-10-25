@@ -34,8 +34,8 @@ public class ListingDetailViewController: UIViewController {
         service.events.subscribe(onNext: { [weak self] event in
             self?.listing = event.listing
             self?.updateUI()
-            }, onError: { error in
-                print("onError: \(error)")
+        }, onError: { error in
+            print("onError: \(error)")
         }, onCompleted: {
             print("onCompleted")
         }, onDisposed: {

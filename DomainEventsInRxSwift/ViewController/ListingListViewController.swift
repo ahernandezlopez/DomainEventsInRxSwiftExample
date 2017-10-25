@@ -45,8 +45,8 @@ public class ListingListViewController: UIViewController {
             case let .delete(listing):
                 self.contentView.delete(listing: listing)
             }
-            }, onError: { error in
-                print("onError: \(error)")
+        }, onError: { error in
+            print("onError: \(error)")
         }, onCompleted: {
             print("onCompleted")
         }, onDisposed: {
