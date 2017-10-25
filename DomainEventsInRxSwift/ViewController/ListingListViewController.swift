@@ -59,8 +59,8 @@ public class ListingListViewController: UIViewController {
             let viewController = ListingDetailViewController(service: self.service,
                                                              listing: listing)
             self.navigationController?.pushViewController(viewController, animated: true)
-            }, onError: { error in
-                print("onError: \(error)")
+        }, onError: { error in
+            print("onError: \(error)")
         }, onCompleted: {
             print("onCompleted")
         }, onDisposed: {
