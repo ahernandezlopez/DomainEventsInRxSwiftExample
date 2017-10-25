@@ -21,6 +21,7 @@ public class ListingListViewController: UIViewController {
     }
     
     public override func viewDidLoad() {
+        super.viewDidLoad()
         view.backgroundColor = UIColor.white
         contentView.frame = view.frame
         view.addSubview(contentView)

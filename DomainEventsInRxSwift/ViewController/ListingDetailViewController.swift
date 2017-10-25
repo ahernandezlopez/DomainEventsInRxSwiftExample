@@ -23,6 +23,7 @@ public class ListingDetailViewController: UIViewController {
     }
     
     public override func viewDidLoad() {
+        super.viewDidLoad()
         contentView.frame = view.frame
         view.addSubview(contentView)
         updateUI()
