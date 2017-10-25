@@ -5,13 +5,11 @@ import UIKit
 public class ListingListViewController: BaseViewController {
     private let contentView: ListingListView
     private let repository: ListingRepository
-    private var visibleDisposeBag: DisposeBag
     
     public init(repository: ListingRepository,
                 title: String) {
         self.contentView = ListingListView()
         self.repository = repository
-        self.visibleDisposeBag = DisposeBag()
         super.init()
         self.title = title
     }
