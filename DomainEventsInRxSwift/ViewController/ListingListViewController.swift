@@ -55,7 +55,7 @@ public class ListingListViewController: UIViewController {
         
         contentView.selectedListing.subscribe(onNext: { [weak self] listing in
             guard let `self` = self,
-                let listing = listing else { return }
+                  let listing = listing else { return }
             let viewController = ListingDetailViewController(service: self.service,
                                                              listing: listing)
             self.navigationController?.pushViewController(viewController, animated: true)
